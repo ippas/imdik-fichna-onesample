@@ -23,7 +23,15 @@ docker run --rm -v $WD:/data ewels/multiqc:latest /data -o /data
 ```
   * aligment
 ```bash
-docker run --rm -v $PWD:/data intelliseqngs/bwa-mem-grch38-no-alt:3.1.0 bwa mem -t 6 -R "@RG\tID:HVYK2DSXY.2\tPU:HVYK2DSXY.2.onesample\tPL:Illumina\tLB:onesample.library\tSM:onesample" -K 100000000 -Y /resources/grch38-no-alt-analysis-set.fa /data/a7582/a7582_FDPL210061474-1b_HVYK2DSXY_L2_1.fq.gz /data/a7582/a7582_FDPL210061474-1b_HVYK2DSXY_L2_2.fq.gz -o /data/a7582/onesample-unsorted.sam
+docker run --rm -v $PWD:/data intelliseqngs/bwa-mem-grch38-no-alt:3.1.0 bwa mem \
+	-t 6 \
+	-R "@RG\tID:HVYK2DSXY.2\tPU:HVYK2DSXY.2.onesample\tPL:Illumina\tLB:onesample.library\tSM:onesample" \
+	-K 100000000 \
+	-Y \
+	/resources/grch38-no-alt-analysis-set.fa \
+	/data/a7582/a7582_FDPL210061474-1b_HVYK2DSXY_L2_1.fq.gz \
+	/data/a7582/a7582_FDPL210061474-1b_HVYK2DSXY_L2_2.fq.gz \
+	-o /data/a7582/onesample-unsorted.sam
 ```
 
 ## Version 1
