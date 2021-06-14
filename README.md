@@ -38,10 +38,14 @@ docker run --rm -v $PWD:/data intelliseqngs/bwa-mem-grch38-no-alt:3.1.0 bwa mem 
 
 4. Mark duplicates
 ```bash
-docker run --rm -v $PWD:/data intelliseq/bwa samblaster -i /data/a7582/onesample-unsorted.sam -o /data/a7582/onesample-markdup.sam 2> onesample-bwa-samblaster-stderr.log
+docker run --rm -v $PWD:/data intelliseq/bwa samblaster -i /data/a7582/onesample-unsorted.sam -o /data/a7582/onesample-markdup.sam 2> a7582/onesample-bwa-samblaster-stderr.log
+# note: redirecting stderr to a file is outside of a container
 ```
 
 5. Samtools sort
 ```bash
-docker run --rm -v $PWD:/data samtools:1.12 sort -o /data/a7582/onesample-markdup-sorted.bam -@ 6 /data/a7582/onesample-markdup-sorted.sam
+docker run --rm -v $PWD:/data intelliseq/bwa samtools sort -o /data/a7582/onesample-markdup-sorted.bam -@ 6 /data/a7582/onesample-markdup.sam
 ```
+
+6. Remove sam files
+
