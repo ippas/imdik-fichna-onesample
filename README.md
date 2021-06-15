@@ -77,3 +77,23 @@ gatk --java-options -Xms3000m ApplyBQSR \
 	--create-output-bam-md5 \
 	--use-original-qualities
 ```
+
+## Version 2
+
+3. Alignment (fq-bwa-mem.wdl)
+  * read group header line
+```
+@RG\tID:HVYK2DSXY.2\tPU:HVYK2DSXY.2.onesample\tPL:Illumina\tLB:onesample.library\tSM:onesample
+```
+  * alignment
+```bash
+docker run --rm -v $PWD:/data intelliseqngs/bwa-mem-grch38-no-alt:3.1.0 bwa mem \
+	-t 5 \
+	-R "@RG\tID:HVYK2DSXY.2\tPU:HVYK2DSXY.2.onesample\tPL:Illumina\tLB:onesample.library\tSM:onesample" \
+	-K 100000000 \
+	-Y \
+	/resources/grch38-no-alt-analysis-set.fa \
+	/data/a7582/a7582_FDPL210061474-1b_HVYK2DSXY_L2_1.fq.gz \
+	/data/a7582/a7582_FDPL210061474-1b_HVYK2DSXY_L2_2.fq.gz \
+	| bgzip > a7582/onesample_unsorted.bam
+```
