@@ -18,12 +18,12 @@ docker run --rm -v $WD:/data ewels/multiqc:latest /data -o /data
 
 ## Version 1
 
-3. Aligment (ifpan-marpiech-wgs)
+3. Alignment (ifpan-marpiech-wgs)
   * read group header line
 ```
 @RG\tID:HVYK2DSXY.2\tPU:HVYK2DSXY.2.onesample\tPL:Illumina\tLB:onesample.library\tSM:onesample
 ```
-  * aligment
+  * alignment
 ```bash
 docker run --rm -v $PWD:/data intelliseqngs/bwa-mem-grch38-no-alt:3.1.0 bwa mem \
 	-t 6 \
