@@ -16,6 +16,8 @@ docker run --rm -v $WD:/data pegi3s/fastqc -t 2 \
 docker run --rm -v $WD:/data ewels/multiqc:latest /data -o /data
 ```
 
+## Version 1
+
 3. Aligment (ifpan-marpiech-wgs)
   * read group header line
 ```
@@ -33,8 +35,6 @@ docker run --rm -v $PWD:/data intelliseqngs/bwa-mem-grch38-no-alt:3.1.0 bwa mem 
 	/data/a7582/a7582_FDPL210061474-1b_HVYK2DSXY_L2_2.fq.gz \
 	-o /data/a7582/onesample-unsorted.sam
 ```
-
-## Version 1
 
 4. Mark duplicates (ifpan-marpiech-wgs)
 ```bash
