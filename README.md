@@ -62,3 +62,18 @@ gatk --java-options -Xms6000m BaseRecalibrator \
 	--known-sites $RES_PATH/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
 ```
 
+8. Perform bam base quality scores recalibration (bam-base-recalib.wdl)
+```bash
+docker container run --rm -v $PWD:/data intelliseqngs/gatk-4.1.7.0-hg38:1.0.1 \
+gatk --java-options -Xms3000m ApplyBQSR \
+	-R /resources/reference-genomes/broad-institute-hg38/Homo_sapiens_assembly38.fa \
+	-I /data/a7582/onesample-markdup-sorted.bam \
+	-O /data/a7582/onesample_markdup-recalibrated.bam \
+	-bqsr /data/a7582/onesample_recal-data.csv \
+	--static-quantized-quals 10 \
+	--static-quantized-quals 20 \
+	--static-quantized-quals 30 \
+	--add-output-sam-program-record false \
+	--create-output-bam-md5 \
+	--use-original-qualities
+```
