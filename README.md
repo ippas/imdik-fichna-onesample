@@ -49,4 +49,16 @@ docker run --rm -v $PWD:/data intelliseq/bwa samtools sort -o /data/a7582/onesam
 
 6. Remove sam files (ifpan-marpiech-wgs)
 
+7. Make bqsr report (bam-bsqr.wdl)
+```bash
+RES_PATH=/resources/broad-institute-resources-for-bqsr-and-vqsr/indels-known-sites/ &&
+docker container run --rm -v $PWD:/data/ intelliseqngs/task_bam-bsqr:1.1.0 \
+gatk --java-options -Xms6000m BaseRecalibrator \
+	-R /resources/reference-genomes/broad-institute-hg38/Homo_sapiens_assembly38.fa \
+	-I /data/a7582/onesample-markdup-sorted.bam \
+	--use-original-qualities \
+	-O /data/a7582/onesample_recal-data.csv \
+	--known-sites $RES_PATH/Homo_sapiens_assembly38.known_indels.vcf.gz \
+	--known-sites $RES_PATH/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
+```
 
