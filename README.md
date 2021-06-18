@@ -121,3 +121,41 @@ gatk --java-options -Xms3000m ApplyBQSR \
 	--create-output-bam-md5 \
 	--use-original-qualities
 ```
+
+7. Download interval list
+```bash
+curl "http://anakin.intelliseq.pl/public/intelliseqngs/workflows/resources/intervals/broad-institute-wgs-calling-regions/hg38.even.handcurated.20k.broad-institute-hg38.interval_list" > a7582/interval_list
+```
+
+8. Split interval list (here 1 piece - just for a future reference)
+```bash
+docker container run --rm -v $PWD:/data/ intelliseqngs/task_interval-group:1.0.2 \
+	python3 /intelliseqtools/interval-group.py \
+	--interval_file /data/a7582/interval_list \
+	--no_pieces 1 \
+	--output_dir /data/a7582
+```
+
+9. Call germline SNPs and indels via local re-assembly of haplotypes
+```bash
+docker container run --rm -v $PWD:/data/ intelliseqngs/gatk-4.1.7.0-hg38:1.0.1 \
+gatk --java-options "-Xms4g -Xmx63g" HaplotypeCaller \
+	-R /resources/reference-genomes/broad-institute-hg38/Homo_sapiens_assembly38.fa \
+	-I /data/a7582/onesample_markdup-recalibrated.bam \
+	-L /data/a7582/part1-interval_list.interval_list \
+	-O /data/a7582/onesample.g.vcf.gz \
+	-ERC GVCF \
+	--bam-output /data/a7582/onesample_realigned-haplotypecaller.bam \
+	-contamination 0
+```
+
+10. Perform joint genotyping on one or more samples pre-called with HaplotypeCaller
+```bash
+docker container run --rm -v $PWD:/data/ intelliseqngs/gatk-4.1.7.0-hg38:1.0.1 \
+	gatk --java-options "-Xmx5g -Xms5g" GenotypeGVCFs \
+	--intervals /data/a7582/part1-interval_list.interval_list \
+	--reference /resources/Homo_sapiens_assembly38.fa \
+	--annotate-with-num-discovered-alleles true \
+	--variant /data/a7582/onesample.g.vcf.gz \
+	--output /data/a7582/onesample.vcf.gz
+```
