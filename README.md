@@ -165,3 +165,10 @@ docker container run --rm -v $PWD:/data/ intelliseqngs/gatk-4.1.7.0-hg38:1.0.1 \
 cd a7582
 for f in onesample*; do mv "$f" "$(echo "$f" | sed s/onesample/a7582/)"; done
 ```
+
+12. Report
+```bash
+cromwell run https://gitlab.com/intelliseq/workflows/-/raw/dev/src/main/wdl/pipelines/vcf-to-acmg-report/vcf-to-acmg-report.wdl \
+	--inputs inputs-neurodevelopmental-abnormality.json \
+	--options cromwell.conf
+```
