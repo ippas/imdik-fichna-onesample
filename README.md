@@ -159,3 +159,9 @@ docker container run --rm -v $PWD:/data/ intelliseqngs/gatk-4.1.7.0-hg38:1.0.1 \
 	--variant /data/a7582/onesample.g.vcf.gz \
 	--output /data/a7582/onesample.vcf.gz
 ```
+
+11. Rename files (`a7582` is better than `onesample`)
+```bash
+cd a7582
+for f in onesample*; do mv "$f" "$(echo "$f" | sed s/onesample/a7582/)"; done
+```
