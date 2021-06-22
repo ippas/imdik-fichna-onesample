@@ -1,0 +1,11 @@
+{
+	"vcf_to_acmg_report.sample_id": "a7582",
+	"vcf_to_acmg_report.vcf": "/home/ifpan/projects/imdik-fichna-onesample/a7582/a7582.vcf.gz",
+	"vcf_to_acmg_report.tbi": "/home/ifpan/projects/imdik-fichna-onesample/a7582/a7582.vcf.gz.tbi",
+	"vcf_to_acmg_report.genome_or_exome": "genome",
+	"vcf_to_acmg_report.hpo_terms": "HP:0010529, HP:0007018, HP:0002360, HP:0100035, HP:0100034, HP:0000742, HP:0000718, HP:0000722",
+	"vcf_to_acmg_report.bams": [
+		"/home/ifpan/projects/imdik-fichna-onesample/a7582/a7582_markdup-recalibrated.bam",
+		"/home/ifpan/projects/imdik-fichna-onesample/a7582/a7582_markdup-recalibrated.bam"
+	]
+}
