@@ -6,6 +6,6 @@
 	"vcf_to_acmg_report.hpo_terms": "HP:0012759",
 	"vcf_to_acmg_report.bams": [
 		"/home/ifpan/projects/imdik-fichna-onesample/a7582/a7582_markdup-recalibrated.bam",
-		"/home/ifpan/projects/imdik-fichna-onesample/a7582/a7582_markdup-recalibrated.bam"
+		"/home/ifpan/projects/imdik-fichna-onesample/a7582/a7582_realigned-haplotypecaller.bam"
 	]
 }
