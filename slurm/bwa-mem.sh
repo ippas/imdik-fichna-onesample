@@ -4,7 +4,7 @@
 #SBATCH -p plgrid
 #SBATCH -t 1-0:0:0
 #SBATCH --cpus-per-task=12
-#SBATCH --mem=8GB
+#SBATCH --mem=10GB
 #SBATCH --output=/net/archive/groups/plggneuromol/jhajto/slurm-std/%j.out
 #SBATCH --error=/net/archive/groups/plggneuromol/jhajto/slurm-std/%j.err
 
