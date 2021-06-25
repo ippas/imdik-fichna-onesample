@@ -75,8 +75,8 @@ docker run --rm -v $WD:/data ewels/multiqc:latest /data -o /data
       docker container run --rm -v $PWD:/data/ intelliseqngs/gatk-4.2.0.0:1.0.0 \
       gatk --java-options -Xmx14g MarkDuplicates \
 	      -I /data/a7582/onesample_unsorted.bam \
-	      -O onesample_dup-marked_v2.bam \
-	      --METRICS_FILE onesample_markdup-metrics_v2.txt \
+	      -O /data/a7582/onesample_dup-marked_v2.bam \
+	      --METRICS_FILE /data/a7582/onesample_markdup-metrics_v2.txt \
 	      --VALIDATION_STRINGENCY SILENT \
 	      --OPTICAL_DUPLICATE_PIXEL_DISTANCE 2500 \
 	      --ASSUME_SORT_ORDER "queryname" \
@@ -85,8 +85,8 @@ docker run --rm -v $WD:/data ewels/multiqc:latest /data -o /data
 
       docker container run --rm -v $PWD:/data/ intelliseqngs/gatk-4.2.0.0:1.0.0 \
       gatk --java-options -Xmx15g SortSam \
-	      -I onesample_dup-marked_v2.bam \
-	      -O onesample_sorted-dup-marked_v2.bam \
+	      -I /data/a7582/onesample_dup-marked_v2.bam \
+	      -O /data/a7582/onesample_sorted-dup-marked_v2.bam \
 	      --SORT_ORDER "coordinate" \
 	      --CREATE_INDEX true \
 	      --CREATE_MD5_FILE true \
