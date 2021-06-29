@@ -21,3 +21,14 @@ ID               Name   Partition   Nodes   Cores   Decl._mem   Mem._%_usage    
 --               ----   ---------   -----   -----   ---------   ------------    ----    ---------   ----------
 57142124   bwa-mem.sh      plgrid       1      12     12.0GiB          65.8%   98.5%   4-04:19:24     08:21:37
 ```
+
+3. MarkDuplicates, SortSam
+   Zadanie uruchomione na jedym wątku. Ze względu na ograniczoną pojemność folderu `tmp`, zadanie bardzo szybko
+   kończyło się błędem. Należało ustawić katalog tymczasowy dla javy: `-Djava.io.tmpdir=$SCRATCH`.
+
+   Zasadniczo nie ma powodu dla którego uruchamiam komendę za pomocą `sh -c "gatk ..."`, a nie po prostu `gatk ...`. Należy jednak uważać na odpowiedni cudzysłów.
+```
+ID                     Name   Partition   Nodes   Cores   Decl._mem   Mem._%_usage    Eff.   CPU._used   Wall._Used
+--                     ----   ---------   -----   -----   ---------   ------------    ----   ---------   ----------
+57337019   mark-dup-sort.sh      plgrid       1       1     18.0GiB          77.0%   73.3%    11:37:06     11:37:06
+```
