@@ -40,3 +40,10 @@ ID                   Name   Partition   Nodes   Cores   Decl._mem   Mem._%_usage
 --                   ----   ---------   -----   -----   ---------   ------------    ----   ---------   ----------
 57442954   bqsr-report.sh      plgrid       1       1     10.0GiB          20.1%   99.8%    03:16:35     03:16:35
 ```
+
+5. Apply BQSR
+```
+ID                  Name   Partition   Nodes   Cores   Decl._mem   Mem._%_usage    Eff.   CPU._used   Wall._Used
+--                  ----   ---------   -----   -----   ---------   ------------    ----   ---------   ----------
+57448740   apply-bqsr.sh      plgrid       1       1     10.0GiB          10.5%   99.8%    04:53:27     04:53:27
+```
