@@ -47,3 +47,11 @@ ID                  Name   Partition   Nodes   Cores   Decl._mem   Mem._%_usage 
 --                  ----   ---------   -----   -----   ---------   ------------    ----   ---------   ----------
 57448740   apply-bqsr.sh      plgrid       1       1     10.0GiB          10.5%   99.8%    04:53:27     04:53:27
 ```
+
+6. VCF (HaplotypeCaller, GenotypeGVCFs)
+```
+ID                  Name   Partition   Nodes   Cores   Decl._mem   Mem._%_usage    Eff.   CPU._used   Wall._Used
+--                  ----   ---------   -----   -----   ---------   ------------    ----   ---------   ----------
+64863878                      vcf.sh           plgrid       1       1     14.0GiB          33.0%   99.2%   1-08:54:15
+65114703                      vcf.sh           plgrid       1       1     14.0GiB          12.6%   99.0%     01:30:47
+```
